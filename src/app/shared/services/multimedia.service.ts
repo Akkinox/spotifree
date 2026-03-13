@@ -1,0 +1,152 @@
+import { EventEmitter, Injectable } from '@angular/core';
+import { TrackModel } from '@core/models/tracks.model';
+import { BehaviorSubject} from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MultimediaService {
+
+  callback: EventEmitter<any> = new EventEmitter();
+
+  public trackInfo$: BehaviorSubject<any> = new BehaviorSubject(undefined); //TODO: El BehaviorSubject es un tipo de observable que tiene un valor inicial y emite el valor actual a los nuevos suscriptores, es decir que si alguien se suscribe después de que se ha emitido un valor, ese nuevo suscriptor recibirá el último valor emitido, en este caso el valor inicial es null
+  public audio!: HTMLAudioElement; //TODO: <audio> es una etiqueta de html, el ! es para decirle a typescript que se que esto va a existir en algun momento, pero no ahora
+  public timeElapsed$: BehaviorSubject<string> = new BehaviorSubject("00:00"); //TODO: El timeElapsed$ es un observable que
+  public timeRemaining$: BehaviorSubject<string> = new BehaviorSubject("-00:00"); //TODO: El timeRemaining$ es un observable que va asimilando los min que van pasando de la cancion
+  public playerStatus$: BehaviorSubject<string> = new BehaviorSubject("paused"); //TODO: El playerStatus$ es un observable que es el que le da el play y stop, este comprende la logica de parar o no la musica
+  public playerPercentage$: BehaviorSubject<number> = new BehaviorSubject(0); 
+
+  constructor() { 
+    this.audio = new Audio();
+    this.trackInfo$.subscribe(res => {
+      if(res){
+        this.setAudio(res);
+      }
+    });
+    this.listenAllAudioEvents();
+  }
+
+  //TODO: Funciones publicas
+  public setAudio(track: TrackModel): void{
+    this.audio.src = track.url;
+    this.audio.play();
+  }
+
+  private listenAllAudioEvents(): void{
+    this.audio.addEventListener("timeupdate",this.calculateTime, false);
+    this.audio.addEventListener("playing",this.setPlayerStatus, false);
+    this.audio.addEventListener("play",this.setPlayerStatus, false);
+    this.audio.addEventListener("pause",this.setPlayerStatus, false);
+    this.audio.addEventListener("ended",this.setPlayerStatus, false);
+  }
+
+  private setPlayerStatus = (state:any) => {
+    console.log("Disparando evento playerStatus");
+    switch(state.type){
+      case "play":
+        this.playerStatus$.next('play');
+        break;
+      case "playing":
+        this.playerStatus$.next('playing');
+        break;
+      case "ended":
+        this.playerStatus$.next('ended');
+        break;
+      default:
+        this.playerStatus$.next('paused');
+        break;
+    }
+  }
+
+  public togglePlayer(): void{
+    (this.audio.paused) ? this.audio.play() : this.audio.pause();
+  }
+
+  private calculateTime = () =>{
+    const {duration, currentTime} = this.audio;
+    this.setTimeElapsed(currentTime);
+    this.setTimeRemaining(currentTime, duration);
+    this.setPercentage(currentTime, duration);
+  }
+
+  private setTimeElapsed(currentTime: number): void{
+    let seconds = Math.floor(currentTime % 60);
+    let minutes = Math.floor(currentTime / 60) % 60;
+    const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+    const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    const displayFormat = `${displayMinutes}:${displaySeconds}`;
+    this.timeElapsed$.next(displayFormat);
+  }
+
+  private setTimeRemaining(currentTime: number, duration: number): void{
+    let timeLeft = duration - currentTime;
+    let seconds = Math.floor(timeLeft % 60);
+    let minutes = Math.floor(timeLeft / 60) % 60;
+    const displaySeconds = seconds < 10 ? `0${seconds}` : seconds;
+    const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    const displayFormat = `-${displayMinutes}:${displaySeconds}`;
+    this.timeRemaining$.next(displayFormat);
+  }
+
+  private setPercentage(currentTime: number, duration: number): void{
+    let percentage = (currentTime * 100) / duration;
+    this.playerPercentage$.next(percentage);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* myObservable1$ = new Observable<any>(); */
+  /* myObservable1$: Subject<any> = new Subject(); */
+  /* myObservable1$: BehaviorSubject<any> = new BehaviorSubject("Valor inicial"); */
+
+
+  /* constructor() { 
+
+    /* setTimeout(() => {
+      this.myObservable1$.next("Hola mundo");
+    }, 1000);
+    setTimeout(() => {
+      this.myObservable1$.error("Hola mundo error");
+    }, 3000); */
+
+    /* setTimeout(() => {
+      this.myObservable1$.next("Hola mundo");
+    }, 1000);
+    setTimeout(() => {
+      this.myObservable1$.error("Hola mundo error");
+    }, 3000); */
+    //TODO: El observable de aca es el metodo mas largo se podria decir
+    //TODO: El observable de arriba es de tipo suscribe, es decir que este no necesita declararse
+    //TODO: como Observable y definir un observer para utilizarlo ya que estan los 2 a la vez
+    /* this.myObservable1$ = new Observable(
+      (observer:Observer<any>) => {
+        observer.next("Hola mundo");
+        setTimeout(() => {
+          observer.complete();
+        }, 1000);
+        setTimeout(() => {
+          observer.next("Hola mundo después de 3 segundos");
+        }, 3000);
+        setTimeout(() => {
+          observer.error("Cago");
+        }, 3500);
+
+      }); 
+  }*/
+}

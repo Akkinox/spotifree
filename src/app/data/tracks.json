@@ -1,0 +1,147 @@
+{
+    "data": [{
+            "_id": 1,
+            "name": "Vibras",
+            "album": "S.U.N.O",
+            "cover": "https://i.scdn.co/image/ab67616d0000b273e7e16a1d5b21dc863231e731",
+            "date": "2020-05-08",
+            "artist": {
+                "name": "Pablo Chill-E",
+                "nickname": "Pablo Chill-E",
+                "nationality": "CL"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track.mp3",
+            "time": "00:03:33"
+        },
+        {
+            "_id": 2,
+            "name": "miau",
+            "album": "miau",
+            "cover": "https://i.scdn.co/image/ab67616d0000b273f1f1aa2b9d10269696d90eea",
+            "date": "2020-05-08",
+            "artist": {
+                "name": "Young Cister",
+                "nickname": "Young Cister",
+                "nationality": "CL"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track-1.mp3",
+            "time": "00:03:33"
+        },
+        {
+            "_id": 3,
+            "name": "QLOO*",
+            "album": "QLOO*",
+            "cover": "https://i1.sndcdn.com/artworks-AAWs1jdBa56GTF2z-SmnEXA-t500x500.png",
+            "date": "2020-05-08",
+            "artist": {
+                "name": "Young Cister",
+                "nickname": "Young Cister",
+                "nationality": "CL"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track-1.mp3",
+            "time": "00:03:33"
+        },
+        {
+            "_id": 4,
+            "name": "Eh Oh Eh Oh",
+            "album": "Casa De Leones",
+            "cover": "https://i.scdn.co/image/ab67616d0000b2735363f398f1c076404f307760",
+            "date": "2020-05-08",
+            "artist": {
+                "name": "Jowell & Randy",
+                "nickname": "Jowell & Randy",
+                "nationality": "PR"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track-4.mp3",
+            "time": "00:03:33"
+        },
+        {
+            "_id": 5,
+            "name": "DmTf",
+            "album": "DmTf",
+            "cover": "https://images.genius.com/30d2aa3fc6b666dcffaa6f54b907b666.1000x1000x1.png",
+            "date": "2020-05-08",
+            "artist": {
+                "name": "Bad Bunny",
+                "nickname": "Bad Bunny",
+                "nationality": "PR"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track-3.mp3",
+            "time": "00:03:33"
+        },
+        {
+            "_id": 6,
+            "name": "Daytona",
+            "album": "Partyson",
+            "cover": "https://cdn-images.dzcdn.net/images/cover/93ebd04b9d3ac70129d1e72d81bf28e3/1900x1900-000000-80-0-0.jpg",
+            "date": "2020-05-08",
+            "artist": {
+                "name": "Cris Mj",
+                "nickname": "Cris Mj",
+                "nationality": "CL"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track-5.mp3",
+            "time": "00:03:33"
+        },
+        {
+            "_id": 7,
+            "name": "Maullame",
+            "album": "Maullame",
+            "cover": "https://i.scdn.co/image/ab67616d0000b2736d5cd9f8d92ada05cbbb5cc1",
+            "date": "2020-05-08",
+            "artist": {
+                "name": "Cris Mj",
+                "nickname": "Cris Mj",
+                "nationality": "CL"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track-6.mp3",
+            "time": "00:03:33"
+        },
+        {
+            "_id": 8,
+            "name": "Nacimos Pa Morir (feat. Jory Boy)",
+            "album": "Nacimos Pa Morir (feat. Jory Boy)",
+            "cover": "https://i.scdn.co/image/ab67616d0000b273a16fd43991f51ee4312b7519",
+            "date": "2020-05-08",
+            "artist": {
+                "name": "Anuel AA",
+                "nickname": "Anuel AA",
+                "nationality": "PR"
+            },
+            "duration": {
+                "start": 0,
+                "end": 333
+            },
+            "url": "http://localhost:3000/track-7.mp3",
+            "time": "00:03:33"
+        }
+    ]
+}

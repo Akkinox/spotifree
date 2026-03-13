@@ -1,0 +1,8 @@
+.home-wrapper {
+    margin-left: 17.5rem;
+    width: calc(100% - 17.5rem);
+    min-height: 100vh;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, rgba(23, 23, 26, 1) 44%, rgba(24, 24, 24, 1) 100%);
+    overflow-x: hidden;
+}
