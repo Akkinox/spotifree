@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { TrackPageComponent } from './track-page.component';
 
 describe('TrackPageComponent', () => {
@@ -8,6 +8,7 @@ describe('TrackPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ TrackPageComponent ]
     })
     .compileComponents();

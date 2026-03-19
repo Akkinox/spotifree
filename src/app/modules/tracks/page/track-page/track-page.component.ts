@@ -23,14 +23,12 @@ export class TrackPageComponent implements OnInit, OnDestroy {
 
   public loadDataAll(): void{
     this.trackService.getAllTracks$().subscribe(response => {
-      console.log(response);
       this.tracksTrending = response;
     });
   }
 
   public loadDataRandom(): void{
     this.trackService.getRandomTracks$().subscribe(response => {
-      console.log(response);
       this.tracksRandom = response;
     });
   }
